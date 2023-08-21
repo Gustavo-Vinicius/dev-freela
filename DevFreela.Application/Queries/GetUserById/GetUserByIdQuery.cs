@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 using DevFreela.Application.ViewModels;
 using MediatR;
 
-namespace DevFreela.Application.Queries.GetProjectById
+namespace DevFreela.Application.Queries.GetUserById
 {
-    public class GetProjectByIdQuery : IRequest<ProjectDetailsViewModel>
+    public class GetUserByIdQuery : IRequest<UserViewModel>
     {
-        public GetProjectByIdQuery(int id)
+        public GetUserByIdQuery(int id)
         {
             Id = id;
         }
