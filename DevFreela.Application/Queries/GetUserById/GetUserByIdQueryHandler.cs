@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DevFreela.Application.ViewModels;
+using DevFreela.Core.Repositories;
 using DevFreela.Infrastructure.Persistence;
 using MediatR;
 
@@ -10,21 +11,21 @@ namespace DevFreela.Application.Queries.GetUserById
 {
     public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, UserViewModel>
     {
-        private readonly DevFreelaDbContext _dbContext;
-        public GetUserByIdQueryHandler(DevFreelaDbContext dbContext)
+        private readonly IUserRepository _userRepository;
+        public GetUserByIdQueryHandler(IUserRepository userRepository)
         {
-            _dbContext = dbContext;
+            _userRepository = userRepository;
         }
-        public Task<UserViewModel?> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
+        public async Task<UserViewModel> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
-             var user = _dbContext.Users.SingleOrDefault(u => u.Id == request.Id);
+             var user = await _userRepository.GetByIdAsync(request.Id);
 
             if (user == null)
             {
-                return Task.FromResult<UserViewModel?>(null);
+                return null;
             }   
 
-            return Task.FromResult<UserViewModel?>(new UserViewModel(user.FullName, user.Email));
+            return new UserViewModel(user.FullName, user.Email);
         }
     }
 }
