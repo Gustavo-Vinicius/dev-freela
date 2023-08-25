@@ -17,7 +17,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DevFreela.API.Controllers
 {
-     [Route("api/projects")]
+    [Route("api/projects")]
     public class ProjectsController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -56,9 +56,14 @@ namespace DevFreela.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateProjectCommand command)
         {
-            if (command.Title.Length > 50)
+            if (!ModelState.IsValid)
             {
-                return BadRequest();
+                var messages = ModelState
+                    .SelectMany(ms => ms.Value.Errors)
+                    .Select(e => e.ErrorMessage)
+                    .ToList();
+
+                return BadRequest(messages);
             }
 
             var id = await _mediator.Send(command);
