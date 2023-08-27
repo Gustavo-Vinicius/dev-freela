@@ -1,7 +1,5 @@
 using DevFreela.API.Filters;
 using DevFreela.Application.Commands.CreateProject;
-using DevFreela.Application.Services.Implementations;
-using DevFreela.Application.Services.Interfaces;
 using DevFreela.Application.Validators;
 using DevFreela.Core.Repositories;
 using DevFreela.Infrastructure.Persistence;
@@ -24,7 +22,6 @@ builder.Services.AddSwaggerGen();
 var connectionString = builder.Configuration.GetConnectionString("DevFreelaCs");
 builder.Services.AddDbContext<DevFreelaDbContext>(p => p.UseSqlServer(connectionString));
 
-builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<IIskillRepository, IskillRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
