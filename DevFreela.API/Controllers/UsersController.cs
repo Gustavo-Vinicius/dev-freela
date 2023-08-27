@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using DevFreela.API.Model;
 using DevFreela.Application.Commands.CreateUser;
-using DevFreela.Application.InputModels;
 using DevFreela.Application.Queries.GetUserById;
 using DevFreela.Application.Services.Interfaces;
 using MediatR;

@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using DevFreela.Application.Commands.CreateUser;
 using FluentValidation;
-using FluentValidation.Validators;
 
 namespace DevFreela.Application.Validators
 {
