@@ -29,6 +29,8 @@ builder.Services.AddSwaggerGen();
 var connectionString = builder.Configuration.GetConnectionString("DevFreelaCs");
 builder.Services.AddDbContext<DevFreelaDbContext>(p => p.UseSqlServer(connectionString));
 
+builder.Services.AddHttpClient();
+
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<IIskillRepository, IskillRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
