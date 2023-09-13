@@ -1,5 +1,6 @@
 using DevFreela.Core.DTOs;
 using DevFreela.Core.Repositories;
+using DevFreela.Core.Services;
 using DevFreela.Infrastructure.CloudService.Interfaces;
 using MediatR;
 
@@ -28,7 +29,7 @@ namespace DevFreela.Application.Commands.FinishProject
                 FullName = request.FullName
             };
 
-             await _paymentsService.ProcessPayment(paymentInfoDTO);
+             _paymentsService.ProcessPayment(paymentInfoDTO);
 
             project?.Finish();
 

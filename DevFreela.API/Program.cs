@@ -6,6 +6,8 @@ using DevFreela.Application.Validators;
 using DevFreela.Core.Repositories;
 using DevFreela.Core.Services;
 using DevFreela.Infrastructure.Auth;
+using DevFreela.Infrastructure.CloudService.Implementations;
+using DevFreela.Infrastructure.MessageBus;
 using DevFreela.Infrastructure.Persistence;
 using DevFreela.Infrastructure.Persistence.Repositories;
 using FluentValidation.AspNetCore;
@@ -35,6 +37,8 @@ builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<IIskillRepository, IskillRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IPaymentsService, PaymentsService>();
+builder.Services.AddScoped<IMessageBusSerice, MessageBusServices>();
 
 builder.Services.AddMediatR(typeof(CreateProjectCommand));
 builder.Services.AddSwaggerGen(c =>
