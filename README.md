@@ -1,5 +1,5 @@
 
-## 💻 Dev Freela
+## 💻 Dev Freela 
 
 Repositório desenvolvido durante o curso ASP .NET Core Training mantido pela empresa [Luis Dev](https://www.linkedin.com/in/luisdeol/). Neste projeto foram aplicados conceitos de desenvolvimento de APIs Web utilizando .NET 6, Clean Architecture, CQRS, Entity Framework Core, Dapper, Repository Pattern, Testes Unitários, Autenticação e Autorização com JWT, Mensagens e Microserviços.
 
